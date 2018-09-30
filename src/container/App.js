@@ -50,7 +50,7 @@ class App extends Component {//component with state ara called 'smart component'
             //remember to return only one statement/element/container
                 <div className = 'tc'>
                     <h1 className = 'f1'>RoboFriends</h1>
-                    <SearchBox searchChange={this.onSearchChange}/>
+                    <SearchBox searchChange={this.onSearchChange}/>{/*need 'this' because it is a method*/}
                     <Scroll>
                         <ErrorBoundry>
                             <CardList robots={filteredRobots}/>{/*robot and Card will be pass out as CardList single argument {robots,Card}; here dont need curly bracket because it is already outside of JSX*/}
