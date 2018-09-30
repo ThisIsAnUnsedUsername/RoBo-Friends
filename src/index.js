@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react';//need this to use JSX
 import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
-import './index.css'; //css stylesheet import will apply to all js script on this index.html page, so dont need to import multiple time
+import './index.css'; //css stylesheet import will apply to all js script on this index.html page, not because it is imported to all script but all script is called to here
 import 'tachyons';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
