@@ -1,8 +1,8 @@
 import React from 'react';//need this to use JSX
 import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
-import './index.css'; //css stylesheet import will apply to all js script on this index.html page, not because it is imported to all script but all script is called to here
-import 'tachyons';
+import './index.css'; //this has global css isssue
+import 'tachyons';//this also has global css issue
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import App from './container/App'; //if no ". after the filename, then it is ".js"(maybe it means same extension as this file?)

@@ -30,7 +30,7 @@ class App extends Component {//component with state ara called 'smart component'
     }//this run first
 
     componentDidMount() {//this is a mounting function, it automatically launch when page load
-        //overriding the function
+        //overriding the function，this method is inherit from Compnent so it should not be an arrow function
         fetch('https://jsonplaceholder.typicode.com/users')//make http request to fetch repsonse
             .then( response => response.json())//convert to json format
             .then(users => this.setState({ robots: users }));
