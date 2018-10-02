@@ -5,16 +5,18 @@ import './index.css'; //this has global css isssue
 import 'tachyons';//this also has global css issue
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import App from './container/App'; //if no ". after the filename, then it is ".js"(maybe it means same extension as this file?)
+import App from './container/App'; //if no "."" after the filename, then it is ".js"
 import { searchRobots } from './reducer';
-//this is not export default, so you can export many other thing, and you need curly bracket
 
-const store = createStore(searchRobots);
+const store = createStore(searchRobots);//normally the argument name is rootReducer
 
 ReactDOM.render(
-	//render() is mounting(run when page load) and updating(rerender when any STATE change happen in website) method, this is part of life cycle hook
-	<Provider store={store}> {/*provider pass down store to anything in App instaed of passing it by props one level per one level*/}
-		<App /> {/*JSX self close tag need '/' symbol*/}
+	/*render() is mounting(run when page load) and updating(rerender when any STATE change happen in website) method, this is part of life cycle hook
+	provider pass down store to anything in App instead of passing it by individual props one level per one level
+	JSX self close tag need '/' symbol
+	React-redux Provider think comment is another React element child, thus no comment inside*/
+	<Provider store={store}>
+		<App /> 
 	</Provider>,
 	document.getElementById('root') //<App /> are mounted on index.html selector with 'root' id
 );

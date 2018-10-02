@@ -17,7 +17,9 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "eslint": "^5.6.1"
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.6.1",
+    "eslint-plugin-react": "^7.11.1"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "main": ".eslintrc.js",
