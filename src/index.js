@@ -1,14 +1,21 @@
-import React from 'react';//need this to use JSX
+import React from 'react'; //need this to use JSX
 import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css'; //this has global css isssue
-import 'tachyons';//this also has global css issue
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
+import 'tachyons'; //this also has global css issue
 import App from './container/App'; //if no "."" after the filename, then it is ".js"
-import { searchRobots } from './reducer';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createLogger } from 'redux-logger';
+import thunkMiddleware from 'redux-thunk';
+import { Provider } from 'react-redux';
+import { searchRobots, requestRobots } from './reducer';
 
-const store = createStore(searchRobots);//normally the argument name is rootReducer
+const logger = createLogger(); //create middleware, it will show information of state in console log
+const rootReducer = combineReducers({ searchRobots, requestRobots });
+const store = createStore(
+	rootReducer,
+	applyMiddleware(thunkMiddleware, logger)
+); //normally the first argument name is rootReducer
 
 ReactDOM.render(
 	/*render() is mounting(run when page load) and updating(rerender when any STATE change happen in website) method, this is part of life cycle hook
@@ -16,7 +23,7 @@ ReactDOM.render(
 	JSX self close tag need '/' symbol
 	React-redux Provider think comment is another React element child, thus no comment inside*/
 	<Provider store={store}>
-		<App /> 
+		<App />
 	</Provider>,
 	document.getElementById('root') //<App /> are mounted on index.html selector with 'root' id
 );
