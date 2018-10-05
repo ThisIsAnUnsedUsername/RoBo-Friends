@@ -1,5 +1,6 @@
-module.exports = {//https://www.npmjs.com/package/eslint-plugin-react
-    //always use js format because it allows comment
+//always use js format because it allows comments
+module.exports = {//
+    "parser": "babel-eslint", //need this or else class arrow method causes error https://github.com/eslint/eslint/issues/4683
     "env": {
         "browser": true,
         "es6": true
@@ -16,7 +17,7 @@ module.exports = {//https://www.npmjs.com/package/eslint-plugin-react
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react"//https://github.com/babel/babel-eslint/issues/6, need this for react or else importing React causes unused error, install the plugin here https://www.npmjs.com/package/eslint-plugin-react
     ],
     "rules": {
         "indent": [

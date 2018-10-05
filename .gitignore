@@ -12,7 +12,6 @@
 #environment
 /.vs
 /.vscode
-Robofriend.code-workspace
 
 # misc
 .DS_Store
