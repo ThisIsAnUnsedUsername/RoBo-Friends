@@ -14,7 +14,8 @@ const logger = createLogger(); //create middleware, it will show information of 
 const rootReducer = combineReducers({ searchRobots, requestRobots });
 const store = createStore(
 	rootReducer,
-	applyMiddleware(thunkMiddleware, logger)
+	//applyMiddleware(thunkMiddleware, logger)
+	applyMiddleware(thunkMiddleware)
 ); //normally the first argument name is rootReducer
 
 ReactDOM.render(

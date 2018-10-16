@@ -8,6 +8,7 @@ import './App.css';
 import ErrorBoundry from '../component/Boundary';
 import { setSearchField, requestRobots } from '../actions';
 import { connect } from 'react-redux';
+import Header from '../component/Header';
 
 const mapStateToProps = state => {
 	//the argument can have any name
@@ -69,7 +70,7 @@ class App extends Component {
 		) : (
 			//remember to return only one statement/element/container
 			<div className="tc">
-				<h1 className="f1">RoboFriends</h1>
+				<Header />
 				<SearchBox searchChange={onSearchChange} />
 				{/*need 'this' because it is a method*/}
 				<Scroll>
