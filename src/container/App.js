@@ -61,21 +61,20 @@ class App extends Component {
 		//const { robots, searchfield } = this.state;
 		//const { robots } = this.state;
 		const { searchField, onSearchChange, robots, isPending } = this.props; //here is the magic, how they relate?
+		//console.log(robots);
 		const filteredRobots = robots.filter(robot => {
 			return robot.name.toLowerCase().includes(searchField.toLowerCase());
 		});
 		//return !robots.length ? ( //displaying loading if fetch request responding slow
-		return isPending ? (
-			<h1 className="tc">Loading</h1>
-		) : (
-			//remember to return only one statement/element/container
+		//remember to return only one statement/element/container
+		return (
 			<div className="tc">
 				<Header />
 				<SearchBox searchChange={onSearchChange} />
 				{/*need 'this' because it is a method*/}
 				<Scroll>
 					{isPending ? (
-						<h1>Loading</h1>
+						<h1 className="tc">Loading</h1>
 					) : (
 						<ErrorBoundry>
 							{/*ErrorBoundary is childeren properties of custom component  Scroll*/}
