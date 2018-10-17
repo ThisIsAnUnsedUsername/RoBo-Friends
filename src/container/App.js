@@ -74,11 +74,15 @@ class App extends Component {
 				<SearchBox searchChange={onSearchChange} />
 				{/*need 'this' because it is a method*/}
 				<Scroll>
-					<ErrorBoundry>
-						{/*ErrorBoundary is childeren properties of custom component  Scroll*/}
-						<CardList robots={filteredRobots} />
-						{/*cardlist is children properties of custom componenet error boundary*/}
-					</ErrorBoundry>
+					{isPending ? (
+						<h1>Loading</h1>
+					) : (
+						<ErrorBoundry>
+							{/*ErrorBoundary is childeren properties of custom component  Scroll*/}
+							<CardList robots={filteredRobots} />
+							{/*cardlist is children properties of custom componenet error boundary*/}
+						</ErrorBoundry>
+					)}
 				</Scroll>
 			</div>
 		);
