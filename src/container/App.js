@@ -9,6 +9,8 @@ import ErrorBoundry from '../component/Boundary';
 import { setSearchField, requestRobots } from '../actions';
 import { connect } from 'react-redux';
 import Header from '../component/Header';
+import MainPage from '../component/MainPage';
+import { apicall } from '../api/api';
 
 const mapStateToProps = state => {
 	//the argument can have any name
@@ -22,11 +24,13 @@ const mapStateToProps = state => {
 	};
 };
 
+const url = 'https://jsonplaceholder.typicode.com/users';
+
 const mapDispatchToProps = dispatch => {
 	//tell you what prop that you listen to that need to get dispateched
 	return {
 		onSearchChange: event => dispatch(setSearchField(event.target.value)),
-		onRequestRobots: () => dispatch(requestRobots())
+		onRequestRobots: () => dispatch(requestRobots(apicall, url))
 	}; //dispatch action to reducer
 };
 
@@ -42,14 +46,14 @@ class App extends Component {
 	// 	}; //use state instaed of variable
 	// } //this run first
 
-	componentDidMount() {
-		//this is a mounting function, it automatically launch when page load
-		//overriding the function，this method is inherit from Compnent so it should not be an arrow function
-		// fetch('https://jsonplaceholder.typicode.com/users') //make http request to fetch repsonse
-		// 	.then(response => response.json()) //convert to json format
-		// 	.then(users => this.setState({ robots: users }));
-		this.props.onRequestRobots();
-	} //this run 3rd, after render
+	// componentDidMount() {
+	// 	//this is a mounting function, it automatically launch when page load
+	// 	//overriding the function，this method is inherit from Compnent so it should not be an arrow function
+	// 	// fetch('https://jsonplaceholder.typicode.com/users') //make http request to fetch repsonse
+	// 	// 	.then(response => response.json()) //convert to json format
+	// 	// 	.then(users => this.setState({ robots: users }));
+	// 	this.props.onRequestRobots();
+	// } //this run 3rd, after render
 
 	// onSearchChange = event => {
 	// 	//important:searchbox input object call this function, so 'this' is input; but if this fucntion is arrow function, 'this' belong to App object
@@ -60,31 +64,32 @@ class App extends Component {
 		//overiding the function
 		//const { robots, searchfield } = this.state;
 		//const { robots } = this.state;
-		const { searchField, onSearchChange, robots, isPending } = this.props; //here is the magic, how they relate?
-		//console.log(robots);
-		const filteredRobots = robots.filter(robot => {
-			return robot.name.toLowerCase().includes(searchField.toLowerCase());
-		});
-		//return !robots.length ? ( //displaying loading if fetch request responding slow
-		//remember to return only one statement/element/container
-		return (
-			<div className="tc">
-				<Header />
-				<SearchBox searchChange={onSearchChange} />
-				{/*need 'this' because it is a method*/}
-				<Scroll>
-					{isPending ? (
-						<h1 className="tc">Loading</h1>
-					) : (
-						<ErrorBoundry>
-							{/*ErrorBoundary is childeren properties of custom component  Scroll*/}
-							<CardList robots={filteredRobots} />
-							{/*cardlist is children properties of custom componenet error boundary*/}
-						</ErrorBoundry>
-					)}
-				</Scroll>
-			</div>
-		);
+		// const { searchField, onSearchChange, robots, isPending } = this.props; //here is the magic, how they relate?
+		// //console.log(robots);
+		// const filteredRobots = robots.filter(robot => {
+		// 	return robot.name.toLowerCase().includes(searchField.toLowerCase());
+		// });
+		// //return !robots.length ? ( //displaying loading if fetch request responding slow
+		// //remember to return only one statement/element/container
+		// return (
+		// 	<div className="tc">
+		// 		<Header />
+		// 		<SearchBox searchChange={onSearchChange} />
+		// 		{/*need 'this' because it is a method*/}
+		// 		<Scroll>
+		// 			{isPending ? (
+		// 				<h1 className="tc">Loading</h1>
+		// 			) : (
+		// 				<ErrorBoundry>
+		// 					{/*ErrorBoundary is childeren properties of custom component  Scroll*/}
+		// 					<CardList robots={filteredRobots} />
+		// 					{/*cardlist is children properties of custom componenet error boundary*/}
+		// 				</ErrorBoundry>
+		// 			)}
+		// 		</Scroll>
+		// 	</div>
+		// );
+		return <MainPage {...this.props} />;
 	} //render() run 2nd, and 4th(because state change happen in componentDidMount)
 }
 
