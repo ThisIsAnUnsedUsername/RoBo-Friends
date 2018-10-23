@@ -8,7 +8,8 @@ import {
 const initialStateSearch = {
 	searchField: ''
 };
-
+//reducer must be pure function
+//pure function cannot change the argument, that is why you clone the object
 export const searchRobots = (state = initialStateSearch, action = {}) => {
 	switch (action.type) {
 	case CHANGE_SEARCH_FIELD:
