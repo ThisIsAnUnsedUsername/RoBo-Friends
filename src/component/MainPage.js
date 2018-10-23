@@ -21,7 +21,7 @@ class MainPage extends Component {
 	};
 
 	render() {
-		const { searchField, onSearchChange, robots, isPending } = this.props;
+		const { onSearchChange, isPending } = this.props;
 
 		return (
 			<div className="tc">
