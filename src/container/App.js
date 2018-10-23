@@ -1,14 +1,9 @@
 //this type of file knowns as smart componenet container
 
 import React, { Component } from 'react';
-import CardList from '../component/CardList';
-import SearchBox from '../component/SearchBox';
-import Scroll from '../component/Scroll';
 import './App.css';
-import ErrorBoundry from '../component/Boundary';
 import { setSearchField, requestRobots } from '../actions';
 import { connect } from 'react-redux';
-import Header from '../component/Header';
 import MainPage from '../component/MainPage';
 import { apicall } from '../api/api';
 

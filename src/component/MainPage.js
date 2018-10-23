@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import CardList from '../component/CardList';
 import SearchBox from '../component/SearchBox';
 import Scroll from '../component/Scroll';
-import './MainPage.css';
 import ErrorBoundry from '../component/Boundary';
 import Header from '../component/Header';
 
