@@ -9,13 +9,13 @@ import Header from '../component/Header';
 
 class MainPage extends Component {
 	componentDidMount() {
-		console.log(process.env.NODE_ENV);
+		//console.log(process.env.NODE_ENV);
 		//return environment variable NODE_ENV in this process
 		//NODE_ENV is default by create-react-app
 		//the value is development if run in development
 		//the value is production if built
 		//this is common practice
-		console.log(process.env.REACT_APP_SAY_HI); //is defined in .env file
+		//console.log(process.env.REACT_APP_SAY_HI); //is defined in .env file
 		this.props.onRequestRobots();
 	}
 
@@ -29,7 +29,7 @@ class MainPage extends Component {
 
 	render() {
 		const { onSearchChange, isPending } = this.props;
-
+		console.log(this.props);
 		return (
 			<div className="tc">
 				<Header />
